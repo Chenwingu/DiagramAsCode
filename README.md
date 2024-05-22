@@ -1,3 +1,3 @@
 # DiagramAsCode
 
-![image](https://github.com/Chenwingu/DiagramAsCode/blob/main/kubernetes_cluster.png)
+![image](https://github.com/Chenwingu/DiagramAsCode/blob/main/ci_pipeline.png)
