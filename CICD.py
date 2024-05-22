@@ -10,7 +10,7 @@ from diagrams.onprem.compute import Server
 with Diagram("CI/CD Pipeline", show=False, graph_attr={"ranksep": "0.7", "nodesep": "0.4", "splines": "polyline", "ratio": "0.15"}):
     
     with Cluster("New Feature - Development", graph_attr={"fontsize": "20"}):
-         ticket = Custom("Ticket raised/assigned", r"C:\Users\ngucd\Desktop\Projects\diagrams\New folder\jira.png")
+         ticket = Custom("Ticket raised/assigned", "/path/to/jira.png")
          developer = Java("Write/test code")
          github = Github("Developer pushes code")
  
@@ -18,19 +18,19 @@ with Diagram("CI/CD Pipeline", show=False, graph_attr={"ranksep": "0.7", "nodese
 
     with Cluster("Continuous Integration", graph_attr={"fontsize": "20"}):
         jenkins = Jenkins("Jenkins")
-        maven_test = Custom("Compile code/Unit test", r"C:\Users\ngucd\Desktop\Projects\diagrams\New folder\maven.png")
-        sonarqube = Custom("Code Quality Check", r"C:\Users\ngucd\Desktop\Projects\diagrams\New folder\sonarqube.png")
-        dependency_check = Custom("Vulnerability Scan", r"C:\Users\ngucd\Desktop\Projects\diagrams\New folder\dependencycheck.png")
-        maven_build = Custom("Build/Package Application", r"C:\Users\ngucd\Desktop\Projects\diagrams\New folder\maven.png")
+        maven_test = Custom("Compile code/Unit test", "/path/to/maven.png")
+        sonarqube = Custom("Code Quality Check", "/path/to/sonarqube.png")
+        dependency_check = Custom("Vulnerability Scan", "/path/to/dependencycheck.png")
+        maven_build = Custom("Build/Package Application", "/path/to/maven.png")
 
         jenkins >> maven_test >> sonarqube >> dependency_check >> maven_build
 
     github >> jenkins
 
     with Cluster("Artifact - Docker Image", graph_attr={"fontsize": "20"}):
-         nexus = Custom("Push Artifact", r"C:\Users\ngucd\Desktop\Projects\diagrams\New folder\nexus.png")
+         nexus = Custom("Push Artifact", "/path/to/nexus.png")
          docker_build = Docker("Docker build and Tag")
-         trivy = Custom("Docker Image Scan", r"C:\Users\ngucd\Desktop\Projects\diagrams\New folder\trivy.png")
+         trivy = Custom("Docker Image Scan", "/path/to/trivy.png")
 
          nexus >> docker_build >> trivy
 
@@ -38,7 +38,7 @@ with Diagram("CI/CD Pipeline", show=False, graph_attr={"ranksep": "0.7", "nodese
 
     with Cluster("Continuous Delivery", graph_attr={"fontsize": "20"}):
          docker_push = Docker("Docker Push")
-         kubernetes = Custom("Deploy to Kubernetes",  r"C:\Users\ngucd\Desktop\Projects\diagrams\New folder\kubernetes.png")
+         kubernetes = Custom("Deploy to Kubernetes",  "/path/to/kubernetes.png")
 
          docker_push >> kubernetes
 
